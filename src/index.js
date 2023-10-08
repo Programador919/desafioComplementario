@@ -7,15 +7,20 @@ import mongoose from 'mongoose';
 import cartsRouter from "./router/carts.routes.js"
 import messagesRouter from "./router/messages.routes.js"
 import productsRouter from "./router/products.routes.js"
-//import upload.Router from "./router/upload.routes.js"
-import viewsRouter from "./router/views.routes.js"
+import uploadRouter from "./router/upload.routes.js"
+
+
 
 const app = express();
 const PORT = 8080
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 const httpServer = app.listen(PORT, ()=>{
     console.log(`Servidor Express Puerto ${PORT}`);
 });
+
 
 mongoose.connect("mongodb+srv://luisalbertovalencia1966:2ogZdmSl9jWGJBAV@proyectocoder.sqvx5rc.mongodb.net/?retryWrites=true&w=majority")
 .then(()=> {
@@ -29,28 +34,23 @@ app.use("/api/carts", cartsRouter)
 app.use("/api/msg", messagesRouter)
 app.use("/api/prod", productsRouter)
 
-app.use("/api/upload", uploadRouter)
-app.use("/api/views", viewsRouter)
-//const product = new ProductManager
 
-//servidor socket
-const socketServer = new Server(httpServer);
+app.use("/", uploadRouter)
 
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-//Handlebars - plantillas diapositiva 37
+//Handlebars 
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
-app.set("views", path.resolve(__dirname + "views"));
-app.set("views", __dirname + "/views");
-app.use("/", viewsRouter);
+app.set("views", path.resolve(__dirname + "/views"));
+app.use("/", express.static(__dirname + "/public"))
 
 
 
-app.get("/", async (req, res) => {
+app.get("/chat", async  (req, res) => {
     res.render("chat", {
-        title: "chat co Mongoose",
+        title: "chat con Mongoose",
     })
 })
+
+

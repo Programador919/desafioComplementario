@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Chat app</title>
+    <script type="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    
+</head>
+
+<body>
+    <div class="formulario" id="username-form">
+        <h1>Integrative Project Chat : </h1>
+        <form class="for" id="username-form" action="/api/msg" method="POST">
+            <input type="text" id="username" placeholder="Username" name="user" required>
+            <input type="text" id="message" placeholder="Message"  name="message" required>
+            <button type="submit">Send message</button>
+        </form>
+    </div>
+    <script src="/js/chat.js"></script>
+</body>
+</html>
