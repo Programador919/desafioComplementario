@@ -2,3 +2,5 @@ Puerto 8080
 
 se inicializa con el comado : npm start
 
+en la carpeta uploads hay imagenes de postman del chat y del funcionamento del crud con mongo atlas
+
