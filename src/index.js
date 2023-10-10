@@ -7,8 +7,7 @@ import mongoose from 'mongoose';
 import cartsRouter from "./router/carts.routes.js"
 import messagesRouter from "./router/messages.routes.js"
 import productsRouter from "./router/products.routes.js"
-import uploadRouter from "./router/upload.routes.js"
-
+import upload from './multerConfig.js';
 
 
 const app = express();
@@ -35,8 +34,8 @@ app.use("/api/msg", messagesRouter)
 app.use("/api/prod", productsRouter)
 
 
-app.use("/", uploadRouter)
 
+//app.use("/", uploadRouter)
 
 
 //Handlebars 
@@ -45,7 +44,7 @@ app.set("view engine", "handlebars");
 app.set("views", path.resolve(__dirname + "/views"));
 app.use("/", express.static(__dirname + "/public"))
 
-
+//--------chat---------------
 
 app.get("/chat", async  (req, res) => {
     res.render("chat", {
@@ -53,4 +52,16 @@ app.get("/chat", async  (req, res) => {
     })
 })
 
+// ----------------multer---------
 
+
+app.use(express.static('public')); // Carpeta para archivos estáticos como CSS y JS
+
+app.get('/', (req, res) => {
+  // Sirve el formulario HTML para cargar archivos
+    res.sendFile('index.html', { root: __dirname });
+});
+
+app.post('/upload', upload.single('file'), (req, res) => {
+
+});

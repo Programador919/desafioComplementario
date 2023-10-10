@@ -2,5 +2,15 @@ Puerto 8080
 
 se inicializa con el comado : npm start
 
-en la carpeta uploads hay imagenes de postman del chat y del funcionamento del crud con mongo atlas
+en la carpeta evidencias hay imagenes de postman del chat, del funcionamento del crud con mongo atlas y del multer
+
+localhost:8080  => se encuentra el multer 
+
+localhost:8080/chat => se encuentra el chat
+
+localhost:8080/api/carts => se en cuentra el crud para la collection en mongoDB 
+
+localhost:8080/api/msg => se en cuentra el crud para la collection en mongoDB para mensajes y almacena lo del chat
+
+localhost:8080/api/prod => se en cuentra el crud para la collection en mongoDB de productos
 
